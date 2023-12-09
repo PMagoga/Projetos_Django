@@ -1,0 +1,47 @@
+{% extends "core/base.html" %}
+
+{% block title %}Bem Vindo{% endblock %}
+
+{% block content %}
+    <div class="mt-6 px-6 py-12 bg-gray-100 rouded-xl">
+        <h2 class="mb-12 text-2xl text-center">Novos Itens</h2>
+
+        <div class="grid grid-cols-3 gap-3">
+            {% for item in itens %}
+              <div>
+                <a href="{% url 'item:detail' item.id %}">
+                    <div>
+                        <img src="{{ item.image.url }}" class="rounded-t-xl">
+                    </div>
+
+                    <div class="p-6 bg-whit rounde-b-xl">
+                        <h2 class="text-2xl">{{ item.name }}</h2>
+                        <p class="text-gray-500">Price: {{ item.price }}</p>
+                    </div>
+                </a>
+              </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="mt-6 px-6 py-12 bg-gray-100 rouded-xl">
+        <h2 class="mb-12 text-2xl text-center">Categorias</h2>
+
+        <div class="grid grid-cols-3 gap-3">
+            {% for category in categorys %}
+                <div>
+                    <a href="#">                        
+                        <div class="p-6 bg-whit rounde-b-xl">
+                            <h2 class="text-2xl">{{ category.name }}</h2>
+                            {% if category.itens.count == 1 %}
+                                <p class="text-gray-500">{{ category.itens.count }} item</p>
+                            {% else %}
+                                <p class="text-gray-500">{{ category.itens.count }} itens</p>
+                            {% endif %}                            
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+{% endblock %}

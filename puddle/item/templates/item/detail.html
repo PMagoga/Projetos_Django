@@ -22,7 +22,15 @@
             </p>
         {% endif %}
 
-        <a href="#" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Contate o vendedor</a>
+        {% if request.user == item.created_by %}
+            <div class="mt-6 p-6 bg-white rounded-xl"></div>     
+            <p>Este é o seu item</p>
+
+            <a href="#" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl">Editar</a>
+            <a href="{% url 'item:delete' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl">Deletar</a>
+        {% else %}
+            <a href="#" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Contate o vendedor</a>
+        {% endif %}
     </div>
   </div>
 

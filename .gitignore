@@ -5,6 +5,11 @@
 __pycache__
 db.sqlite3
 media
+settings.py
+asgi.py
+wsgi.py
+admin.py
+tests.py
 
 # Backup files # 
 *.bak 

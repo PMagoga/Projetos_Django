@@ -31,6 +31,7 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
+    
 
     def get_absolute_url(self):
         return reverse("Item_detail", kwargs={"pk": self.pk})
